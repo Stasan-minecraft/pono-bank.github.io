@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pono Bank</title>
+    <script>
+        // Функція для показу полів додавання дитини, якщо користувач дорослий
+        function toggleChildFields() {
+            var cardType = document.getElementById('card_type').value;
+            var childFields = document.getElementById('child_fields');
+            if (cardType === 'Adult') {
+                childFields.style.display = 'block';
+            } else {
+                childFields.style.display = 'none';
+            }
+        }
+    </script>
+</head>
+<body>
+    <h2>Вхід або реєстрація</h2>
+
+    <form action="index.php" method="POST">
+        <label>Ім'я користувача:</label><br>
+        <input type="text" name="username" required><br>
+
+        <label>Пароль:</label><br>
+        <input type="password" name="password" required><br>
+
+        <label>Вік:</label><br>
+        <input type="number" name="age" required><br>
+
+        <label>Тип карти:</label><br>
+        <select name="card_type" id="card_type" onchange="toggleChildFields()" required>
+            <option value="Adult">Карта для дорослих</option>
+        </select><br><br>
+
+        <!-- Поля для реєстрації дитини -->
+        <div id="child_fields" style="display: none;">
+            <h3>Додати дитину:</h3>
+
+            <label>Ім'я дитини:</label><br>
+            <input type="text" name="child_name"><br>
+
+            <label>Колір карти дитини:</label><br>
+            <select name="card_color">
+                <option value="Red">Червоний</option>
+                <option value="Blue">Синій</option>
+                <option value="Green">Зелений</option>
+                <option value="Yellow">Жовтий</option>
+            </select><br>
+
+            <label>Ліміт на перекази для дитини (PON):</label><br>
+            <input type="number" name="limit_amount" value="50"><br>
+        </div><br>
+
+        <button type="submit" name="login">Увійти</button>
+        <button type="submit" name="register">Реєстрація</button>
+    </form>
+</body>
+</html>
